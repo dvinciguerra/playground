@@ -4,7 +4,28 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-ruby '2.6.6'
-
 gem 'sinatra'
 gem 'sinatra-contrib'
+
+gem 'puma'
+
+gem 'puma_worker_killer'
+gem 'rails_autoscale_agent', github: 'adamlogic/rails_autoscale_agent', branch: 'puma'
+gem 'rake'
+
+group :development do
+  gem 'bullet', require: false
+  gem 'foreman'
+  gem 'listen'
+  gem 'memory_profiler'
+  gem 'spring'
+  gem 'web-console'
+end
+
+group :development, :test do
+  gem 'derailed_benchmarks'
+  gem 'dotenv-rails', '2.7.6'
+  gem 'pry'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance'
+end
